@@ -11,8 +11,8 @@ authors = [
 python = "^3.8"
 requests = "^2.24.0"
 
-oarepo = "^3.3"
-oarepo-micro-api = "^1.0.0"
+oarepo = "^3.3.50"
+oarepo-micro-api = "^3.3.49"
 
 oarepo-validate = "^1.0.0"
 oarepo-mapping-includes = "^1.2.0"
