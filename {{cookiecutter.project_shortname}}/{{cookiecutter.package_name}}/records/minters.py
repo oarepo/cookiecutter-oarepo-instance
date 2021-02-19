@@ -30,3 +30,6 @@ def recid_minter(record_uuid, data):
         object_type='rec', object_uuid=record_uuid)
     data[pid_field] = provider.pid.pid_value
     return provider.pid
+
+def records_all_minter(record_uuid, data):
+    raise Exception('Should not be used as all objects are readonly')

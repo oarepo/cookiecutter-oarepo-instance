@@ -1,0 +1,22 @@
+{
+  "mappings": {
+    "date_detection": false,
+    "numeric_detection": false,
+    "oarepo:extends": [
+      "invenio-v1.0.0.json#/InvenioRecord",
+      "dcterms-v2.0.0.json#/DCObject"
+    ],
+    "properties": {
+      "$schema": {
+        "type": "text",
+        "index": false
+      },
+      "title": {
+        "type": "text"
+      },
+      "{{ cookiecutter.datamodel_pid_name }}": {
+        "type": "keyword"
+      }
+    }
+  }
+}

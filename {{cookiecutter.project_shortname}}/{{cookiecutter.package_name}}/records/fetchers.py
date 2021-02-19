@@ -21,3 +21,15 @@ def recid_fetcher(record_uuid, data):
         pid_type=RecordIdProvider.pid_type,
         pid_value=str(data[pid_field]),
     )
+
+def restoration_object_all_fetcher(record_uuid, data):
+    fetched_pid = recid_fetcher(record_uuid, data)
+    print(data)
+    if 'oarepo:validity' in data:
+        return FetchedPID(
+            provider=fetched_pid.provider,
+            pid_type='drcid',
+            pid_value=fetched_pid.pid_value,
+        )
+    else:
+        return fetched_pid

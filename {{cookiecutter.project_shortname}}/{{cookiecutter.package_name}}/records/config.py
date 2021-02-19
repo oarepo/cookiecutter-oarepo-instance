@@ -56,7 +56,7 @@ RECORDS_DRAFT_ENDPOINTS = {
 RECORDS_REST_ENDPOINTS = {
     # readonly url for both endpoints, does not have item route
     # as it is accessed from the endpoints above
-    'restorations/all-objects': dict(
+    'all-records': dict(
         pid_type='allrid',
         pid_minter='all-records',
         pid_fetcher='all-records',

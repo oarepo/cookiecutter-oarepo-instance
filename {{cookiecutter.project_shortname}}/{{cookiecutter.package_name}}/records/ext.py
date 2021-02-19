@@ -3,7 +3,7 @@
 from . import config
 
 
-class RestorationObjectsApp:
+class RecordsApp:
     def __init__(self, app=None, db=None):
         self.init_app(app, db)
 
