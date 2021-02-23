@@ -22,7 +22,7 @@ def recid_fetcher(record_uuid, data):
         pid_value=str(data[pid_field]),
     )
 
-def restoration_object_all_fetcher(record_uuid, data):
+def records_all_fetcher(record_uuid, data):
     fetched_pid = recid_fetcher(record_uuid, data)
     print(data)
     if 'oarepo:validity' in data:

@@ -12,6 +12,6 @@ class RecordMetadataSchemaV1(
     InvenioRecordMetadataSchemaV1Mixin,
     DCObjectSchemaV2Mixin,
     StrictKeysMixin):
-    """Schema for restoration object drafts metadata."""
+    """Schema for records drafts metadata."""
 
     pass

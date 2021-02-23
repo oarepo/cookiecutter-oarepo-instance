@@ -32,7 +32,7 @@ class BaseRecord(SchemaKeepingRecordMixin,
                  MarshmallowValidatedRecordMixin,
                  InheritedSchemaRecordMixin,
                  Record):
-    """Record class for Item Restoration Record"""
+    """Record class for Item Record"""
     ALLOWED_SCHEMAS = OBJECT_ALLOWED_SCHEMAS
     PREFERRED_SCHEMA = OBJECT_PREFERRED_SCHEMA
     MARSHMALLOW_SCHEMA = RecordMetadataSchemaV1

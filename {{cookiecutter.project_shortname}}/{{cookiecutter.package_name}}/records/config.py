@@ -39,11 +39,11 @@ RECORDS_DRAFT_ENDPOINTS = {
 
         # TODO: change this
         # 'create_permission_factory_imp':
-        #     'restoration.objects.permissions.create_object_permission_impl',
+        #     '{{ cookiecutter.package_name }}.records.record.permissions.create_object_permission_impl',
         # 'read_permission_factory_imp':
-        #     'restoration.objects.permissions.read_object_permission_impl',
+        #     '{{ cookiecutter.package_name }}.records.record.permissions.read_object_permission_impl',
         # 'update_permission_factory_imp':
-        #     'restoration.objects.permissions.update_object_permission_impl',
+        #     '{{ cookiecutter.package_name }}.records.record.permissions.update_object_permission_impl',
 
         'record_loaders': {
             'application/json': 'oarepo_validate.json_files_loader',
@@ -67,12 +67,12 @@ RECORDS_REST_ENDPOINTS = {
         search_serializers={
             'application/json': 'oarepo_validate:json_search',
         },
-        list_route='/restorations/all-records/',
+        list_route='/all-records/',
         default_media_type='application/json',
         max_result_window=10000,
 
         # not used really
-        item_route='/restorations/all-objects/not-used-but-must-be-present',
+        item_route='/all-records/not-used-but-must-be-present',
         create_permission_factory_imp=deny_all,
         delete_permission_factory_imp=deny_all,
         update_permission_factory_imp=deny_all,
