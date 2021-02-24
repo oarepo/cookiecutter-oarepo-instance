@@ -62,12 +62,14 @@ jobs:
 #          invenio
       - name: Setup invenio
         run: |
-          cd my-site
-          ./scripts/setup.sh
+          cd my-site/scripts
+          chmod +x setup.sh
+          ./setup.sh
       - name: Run invenio
         run: |
-          cd my-site
-          ./scripts/run.sh
+          cd my-site/scripts
+          chmod +x setup.sh
+          ./run.sh
 #      - name: Test with pytest
 #        run: |
 #          pytest tests
