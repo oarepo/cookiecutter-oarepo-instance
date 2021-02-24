@@ -60,16 +60,19 @@ jobs:
       - name: Test invenio
         run: |
           invenio
-#      - name: Setup invenio
-#        run: |
-#          cd my-site/scripts
-#          chmod +x setup.sh
-#          ./setup.sh
-#      - name: Run invenio
-#        run: |
-#          cd my-site/scripts
-#          chmod +x setup.sh
-#          ./run.sh
+      - name: Docker compose
+        run: |
+          docker-compose up -d
+      - name: Setup invenio
+        run: |
+          cd my-site/scripts
+          chmod +x setup.sh
+          ./setup.sh
+      - name: Run invenio
+        run: |
+          cd my-site/scripts
+          chmod +x setup.sh
+          ./run.sh
 #      - name: Test with pytest
 #        run: |
 #          pytest tests
