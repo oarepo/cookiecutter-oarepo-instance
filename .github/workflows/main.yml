@@ -58,11 +58,11 @@ jobs:
           cd my-site
           poetry install
       - name: Setup invenio
-      - run: |
+        run: |
           cd my-site
           ./scripts/setup.sh
       - name: Run invenio
-      - run: |
+        run: |
           cd my-site
           ./scripts/run.sh
 #      - name: Test with pytest
