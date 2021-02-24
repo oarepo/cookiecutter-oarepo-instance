@@ -24,6 +24,7 @@ oarepo-ui = "^2.0.1"
 oarepo-actions = "^1.0.6"
 oarepo-s3 = "^1.2.0"
 oarepo-references = "^1.11.2"
+oarepo-taxonomies = "^2.5.4"
 
 s3-client-lib = { git = "https://github.com/CESNET/s3-client.git", branch = "master" }
 
