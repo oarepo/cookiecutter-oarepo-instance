@@ -46,11 +46,11 @@ jobs:
         with:
           stack-version: 7.6.0
       - name: Cookiecutter
-          run: |
-            pip install cookiecutter
-            printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git
-            cd my-site
-            ls -la
+        run: |
+          pip install cookiecutter
+          printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git
+          cd my-site
+          ls -la
 #      - name: Install dependencies
 #        run: |
 #          python -m pip install --upgrade pip==20.2.4 wheel setuptools
