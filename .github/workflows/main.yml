@@ -57,17 +57,17 @@ jobs:
         run: |
           cd my-site
           poetry install
-      - name: Test invenio
+#      - name: Test invenio
+#        run: |
+#          invenio
+      - name: Setup invenio
         run: |
-          invenio
-#      - name: Setup invenio
-#        run: |
-#          cd my-site
-#          ./scripts/setup.sh
-#      - name: Run invenio
-#        run: |
-#          cd my-site
-#          ./scripts/run.sh
+          cd my-site
+          ./scripts/setup.sh
+      - name: Run invenio
+        run: |
+          cd my-site
+          ./scripts/run.sh
 #      - name: Test with pytest
 #        run: |
 #          pytest tests
