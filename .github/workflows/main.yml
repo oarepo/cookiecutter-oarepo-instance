@@ -57,6 +57,8 @@ jobs:
           poetry config virtualenvs.create false
       - name: Install dependencies
         run: |
+          ls -la
+          pwd
           poetry install
 #      - name: Test with pytest
 #        run: |
