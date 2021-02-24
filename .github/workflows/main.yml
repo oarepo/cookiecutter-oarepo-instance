@@ -21,20 +21,20 @@ jobs:
         SQLALCHEMY_DATABASE_URI: ["sqlite:///:memory:", "postgresql://postgres:postgres@postgres/ci-test"]
 
     steps:
-      - name: Set up Python {% raw %}${{ matrix.python-version }}{% endraw %}
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
+          python-version: ${{ matrix.python-version }}
       - name: Cache pip
         uses: actions/cache@v2
         with:
           # This path is specific to Ubuntu
           path: ~/.cache/pip
           # Look to see if there is a cache hit for the corresponding requirements file
-          key: {% raw %}${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}{% endraw %}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: |
-            {% raw %}${{ runner.os }}-pip-{% endraw %}
-            {% raw %}${{ runner.os }}-{% endraw %}
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
       - name: Configure sysctl limits
         run: |
           sudo swapoff -a
@@ -49,13 +49,15 @@ jobs:
           run: |
             pip install cookiecutter
             printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip==20.2.4 wheel setuptools
-          pip install -e .[tests]
-      - name: Test with pytest
-        run: |
-          pytest tests
+            cd my-site
+            ls -la
+#      - name: Install dependencies
+#        run: |
+#          python -m pip install --upgrade pip==20.2.4 wheel setuptools
+#          pip install -e .[tests]
+#      - name: Test with pytest
+#        run: |
+#          pytest tests
 
 
 
