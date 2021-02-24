@@ -49,16 +49,13 @@ jobs:
         run: |
           pip install cookiecutter
           printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git
-          cd my-site
-          ls -la
       - name: Before install
         run: |
           pip install poetry
           poetry config virtualenvs.create false
       - name: Install dependencies
         run: |
-          ls -la
-          pwd
+          cd my-site
           poetry install
 #      - name: Test with pytest
 #        run: |
