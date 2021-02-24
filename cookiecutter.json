@@ -9,9 +9,8 @@
     "author_email": "info@{{ cookiecutter.project_site }}",
     "year": "{% now 'local', '%Y' %}",
     "copyright_holder": "{{ cookiecutter.author_name }}",
-    "database": ["postgresql", "mysql"],
-    "datamodel": ["Custom", "None"],
-    "datamodel_extension_class": "{{ cookiecutter.project_name | replace('-', '') | replace(' ', '') }}",
     "datamodel_pid_name": "id",
-    "cli_command": "{{ cookiecutter.package_name }}"
+    "cli_command": "{{ cookiecutter.package_name }}",
+    "server_name": "localhost",
+    "s3_bucket": "oarepo"
 }

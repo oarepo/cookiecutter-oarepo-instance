@@ -22,6 +22,11 @@ oarepo-records-draft = "^5.5.3"
 invenio-records-files = "^1.2.1"
 oarepo-ui = "^2.0.1"
 oarepo-actions = "^1.0.6"
+oarepo-s3 = "^1.2.0"
+oarepo-references = "^1.11.2"
+
+s3-client-lib = { git = "https://github.com/CESNET/s3-client.git", branch = "master" }
+
 
 [tool.poetry.plugins."invenio_config.module"]
 records = "{{ cookiecutter.package_name }}.config"
@@ -42,11 +47,11 @@ records = "{{ cookiecutter.package_name }}.records.ext:RecordsApp"
 records = "{{ cookiecutter.package_name }}.records.jsonschemas"
 
 [tool.poetry.plugins."invenio_pidstore.minters"]
-records = "{{ cookiecutter.package_name }}.records.minters:recid_minter"
+records = "{{ cookiecutter.package_name }}.records.minters:recid_minter_v2"
 all-records = "{{ cookiecutter.package_name }}.records.minters:records_all_minter"
 
 [tool.poetry.plugins."invenio_pidstore.fetchers"]
-records = "{{ cookiecutter.package_name }}.records.fetchers:recid_fetcher"
+records = "{{ cookiecutter.package_name }}.records.fetchers:recid_fetcher_v2"
 all-records = "{{ cookiecutter.package_name }}.records.fetchers:records_all_fetcher"
 
 [build-system]

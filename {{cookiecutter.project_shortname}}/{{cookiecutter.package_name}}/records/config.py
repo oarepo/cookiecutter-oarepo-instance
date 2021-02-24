@@ -89,7 +89,7 @@ FILTERS = {
 }
 
 FACETS = {
-
+ # TODO: přidat default draftové facety
 }
 
 ANONYMOUS_FACETS = {

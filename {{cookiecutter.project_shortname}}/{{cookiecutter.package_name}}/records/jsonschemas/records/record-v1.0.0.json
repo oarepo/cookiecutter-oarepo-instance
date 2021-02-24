@@ -13,10 +13,6 @@
     },
     {
       "properties": {
-        "title": {
-          "description": "Record title.",
-          "type": "string"
-        },
         "{{ cookiecutter.datamodel_pid_name }}": {
           "description": "Invenio record identifier.",
           "type": "string"

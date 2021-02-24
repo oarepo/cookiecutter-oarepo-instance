@@ -13,5 +13,5 @@ class RecordMetadataSchemaV1(
     DCObjectSchemaV2Mixin,
     StrictKeysMixin):
     """Schema for records drafts metadata."""
-
+    # TODO: Change me
     pass
