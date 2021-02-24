@@ -1,0 +1,16 @@
+{
+    "project_name": "My site",
+    "project_shortname": "{{ cookiecutter.project_name | lower | replace(' ', '-') }}",
+    "project_site": "{{ cookiecutter.project_shortname }}.com",
+    "package_name": "{{ cookiecutter.project_shortname | replace('-', '_') }}",
+    "github_repo": "{{ cookiecutter.project_shortname }}/{{ cookiecutter.project_shortname }}",
+    "description": "Invenio digital library framework.",
+    "author_name": "Oarepo",
+    "author_email": "info@{{ cookiecutter.project_site }}",
+    "year": "{% now 'local', '%Y' %}",
+    "copyright_holder": "{{ cookiecutter.author_name }}",
+    "datamodel_pid_name": "id",
+    "cli_command": "{{ cookiecutter.package_name }}",
+    "server_name": "localhost",
+    "s3_bucket": "oarepo"
+}
