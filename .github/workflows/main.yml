@@ -62,7 +62,7 @@ jobs:
           invenio
       - name: Run tests
         run: |
-          ls -la
+          cd my-site
           ./run-tests.sh
 #      - name: Docker compose
 #        run: |
