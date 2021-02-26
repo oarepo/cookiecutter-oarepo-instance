@@ -68,6 +68,8 @@ jobs:
         run: |
           invenio
       - name: Run tests
+        env:
+          SQLALCHEMY_DATABASE_URI: ${{ matrix.SQLALCHEMY_DATABASE_URI }}
         run: |
           cd my-site
           ls -la
