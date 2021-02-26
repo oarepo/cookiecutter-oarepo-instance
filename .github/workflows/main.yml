@@ -53,20 +53,21 @@ jobs:
         run: |
           pip install poetry
           poetry config virtualenvs.create false
-      - name: Install dependencies
-        run: |
-          cd my-site
-          echo -e "\nwhich python"
-          which python
-          poetry install
-          echo -e "\nwpip list"
-          pip list
-      - name: Test invenio
-        run: |
-          invenio
+#      - name: Install dependencies
+#        run: |
+#          cd my-site
+#          echo -e "\nwhich python"
+#          which python
+#          poetry install
+#          echo -e "\nwpip list"
+#          pip list
+#      - name: Test invenio
+#        run: |
+#          invenio
       - name: Run tests
         run: |
           cd my-site
+          ls -la
           cat ./run-tests.sh
 #      - name: Docker compose
 #        run: |
