@@ -68,6 +68,7 @@ trap - EXIT
 echo -e "\ninvenio_run.log:"
 cat invenio_run.log
 
+
 #echo -e "\nsave requirements"
 #REQFILE="upload/requirements-${REQUIREMENTS}.txt"
 #./scripts/poetry2reqs.py | sed 's/\x0D$//' | grep -v '^pywin32==' > $REQFILE
