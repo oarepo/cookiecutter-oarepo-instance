@@ -17,7 +17,7 @@ psql --version
 
 setup () {
   # database
-  invneio db init
+  invenio db init
   invenio db create
 
   # elastisearch

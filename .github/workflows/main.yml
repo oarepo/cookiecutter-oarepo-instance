@@ -48,7 +48,7 @@ jobs:
       - name: Cookiecutter
         run: |
           pip install cookiecutter
-          printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git
+          printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git --checkout main
       - name: Before install
         run: |
           pip install poetry
