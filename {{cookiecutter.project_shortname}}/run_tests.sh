@@ -16,7 +16,14 @@ echo -e "\npsql version:"
 psql --version
 
 setup () {
+  # test database
+  echo -e "\nTest database:"
+  pg_isready -h localhost -p 5432
+  psql -l -h localhost -p 5432 2>&1
+
+
   # database
+  echo -e "\ninvenio init and create"
   invenio db init
   invenio db create
 
