@@ -72,8 +72,8 @@ INVEPID=$!
 trap "kill $INVEPID &>/dev/null; cat invenio_run.log" EXIT
 sleep 8
 
-echo -n "jq version:"; jq --version
-./scripts/test_rest.sh
+#echo -n "jq version:"; jq --version
+#./scripts/test_rest.sh
 
 kill $INVEPID
 trap - EXIT
