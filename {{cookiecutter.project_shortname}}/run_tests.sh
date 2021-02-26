@@ -67,18 +67,18 @@ export INVENIO_RECORDS_REST_DEFAULT_CREATE_PERMISSION_FACTORY='invenio_records_r
 export INVENIO_RECORDS_REST_DEFAULT_UPDATE_PERMISSION_FACTORY='invenio_records_rest.utils:allow_all'
 export INVENIO_RECORDS_REST_DEFAULT_DELETE_PERMISSION_FACTORY='invenio_records_rest.utils:allow_all'
 
-invenio run --cert ./{{cookiecutter.project_shortname}}/development/test.crt --key ./{{cookiecutter.project_shortname}}/development/test.key # > invenio_run.log 2>&1 &
+invenio run --cert ./development/server.crt --key ./development/server.key > invenio_run.log 2>&1 &
 INVEPID=$!
 trap "kill $INVEPID &>/dev/null; cat invenio_run.log" EXIT
 sleep 8
 
 #echo -n "jq version:"; jq --version
-#./scripts/test_rest.sh
+python ./scripts/test_rest.py
 
 kill $INVEPID
 trap - EXIT
-#echo -e "\ninvenio_run.log:"
-#cat invenio_run.log
+echo -e "\ninvenio_run.log:"
+cat invenio_run.log
 
 
 #echo -e "\nsave requirements"
