@@ -19,10 +19,11 @@ setup () {
   # test database
   echo -e "\nTest database:"
   pg_isready -h localhost -p 5432
+  echo $SQLALCHEMY_DATABASE_URI
 
 
   # database
-  echo -e "\ninvenio init and create"
+  echo -e "\ninvenio db init and create"
   invenio db init
   invenio db create
 
