@@ -30,15 +30,20 @@ setup () {
   # elastisearch
   echo -e "\nelasticsearch GET:"
   curl -sX GET "http://127.0.0.1:9200" || cat /tmp/local-es.log
+
+  # index
+  echo -e "\nInvenio Index"
   invenio index destroy --force --yes-i-know
   invenio index init
-  invenio index queue init purge
-  invenio index check
+#  invenio index queue init purge
+#  invenio index check
 
   # taxonomies
+  echo -e "\nTaxonomies"
   invenio taxonomies init
 
   # files
+  echo -e "\nFiles"
   invenio files location --default 'default-s3' s3://oarepo
 
   # Create roles to manage access
