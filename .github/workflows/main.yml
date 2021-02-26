@@ -52,10 +52,12 @@ jobs:
       - name: Before install
         run: |
           pip install poetry
-#          poetry config virtualenvs.create false
+          poetry config virtualenvs.create false
       - name: Install dependencies
         run: |
           cd my-site
+          which python
+          pip list
           poetry install
       - name: Test invenio
         run: |
