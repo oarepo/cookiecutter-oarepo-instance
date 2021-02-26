@@ -67,8 +67,7 @@ jobs:
       - name: Run tests
         run: |
           cd my-site
-          ls -la
-          ./run-tests.sh
+          cat ./run-tests.sh
 #      - name: Docker compose
 #        run: |
 #          cd my-site
