@@ -62,7 +62,7 @@ export INVENIO_RECORDS_REST_DEFAULT_CREATE_PERMISSION_FACTORY='invenio_records_r
 export INVENIO_RECORDS_REST_DEFAULT_UPDATE_PERMISSION_FACTORY='invenio_records_rest.utils:allow_all'
 export INVENIO_RECORDS_REST_DEFAULT_DELETE_PERMISSION_FACTORY='invenio_records_rest.utils:allow_all'
 
-invenio run --cert ./{{cookiecutter.project_shortname}}/ssl/test.crt --key ./{{cookiecutter.project_shortname}}/ssl/test.key > invenio_run.log 2>&1 &
+invenio run --cert ./{{cookiecutter.project_shortname}}/development/test.crt --key ./{{cookiecutter.project_shortname}}/development/test.key > invenio_run.log 2>&1 &
 INVEPID=$!
 trap "kill $INVEPID &>/dev/null; cat invenio_run.log" EXIT
 sleep 8
