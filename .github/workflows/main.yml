@@ -18,23 +18,23 @@ jobs:
     strategy:
       matrix:
         python-version: [ 3.8 ]
-        SQLALCHEMY_DATABASE_URI: ["sqlite:///:memory:", "postgresql://postgres:postgres@postgres/ci-test"]
+        SQLALCHEMY_DATABASE_URI: ["postgresql://postgres:postgres@postgres/ci-test"]
 
     steps:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Cache pip
-        uses: actions/cache@v2
-        with:
-          # This path is specific to Ubuntu
-          path: ~/.cache/pip
-          # Look to see if there is a cache hit for the corresponding requirements file
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-            ${{ runner.os }}-
+#      - name: Cache pip
+#        uses: actions/cache@v2
+#        with:
+#          # This path is specific to Ubuntu
+#          path: ~/.cache/pip
+#          # Look to see if there is a cache hit for the corresponding requirements file
+#          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pip-
+#            ${{ runner.os }}-
       - name: Configure sysctl limits
         run: |
           sudo swapoff -a
@@ -46,15 +46,43 @@ jobs:
         with:
           stack-version: 7.6.0
       - name: Cookiecutter
-          run: |
-            pip install cookiecutter
-            printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git
-            cd my-site
-            ls -la
-#      - name: Install dependencies
+        run: |
+          pip install cookiecutter
+          printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git
+      - name: Before install
+        run: |
+          pip install poetry
+          poetry config virtualenvs.create false
+      - name: Install dependencies
+        run: |
+          cd my-site
+          echo -e "\nwhich python"
+          which python
+          poetry install
+          echo -e "\nwpip list"
+          pip list
+      - name: Test invenio
+        run: |
+          invenio
+      - name: Run tests
+        run: |
+          cd my-site
+          ls -la
+          ./run-tests.sh
+#      - name: Docker compose
 #        run: |
-#          python -m pip install --upgrade pip==20.2.4 wheel setuptools
-#          pip install -e .[tests]
+#          cd my-site
+#          docker-compose up -d
+#      - name: Setup invenio
+#        run: |
+#          cd my-site/scripts
+#          chmod +x setup.sh
+#          ./setup.sh
+#      - name: Run invenio
+#        run: |
+#          cd my-site/scripts
+#          chmod +x setup.sh
+#          ./run.sh
 #      - name: Test with pytest
 #        run: |
 #          pytest tests
