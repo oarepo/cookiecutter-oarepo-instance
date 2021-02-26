@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         python-version: [ 3.8 ]
-        SQLALCHEMY_DATABASE_URI: ["postgresql://postgres:postgres@postgres:5432/ci-test"]
+        SQLALCHEMY_DATABASE_URI: ["postgresql://postgres:postgres@localhost:5432/ci-test"]
 
     steps:
       - name: Set up Python ${{ matrix.python-version }}
