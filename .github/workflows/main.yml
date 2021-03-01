@@ -15,12 +15,28 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+      redis:
+        # Docker Hub image
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
     strategy:
       matrix:
         python-version: [ 3.8 ]
-        SQLALCHEMY_DATABASE_URI: ["postgresql://postgres:postgres@postgres/ci-test"]
+        SQLALCHEMY_DATABASE_URI: ["postgresql://postgres:postgres@localhost:5432/ci-test"]
 
     steps:
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -48,7 +64,7 @@ jobs:
       - name: Cookiecutter
         run: |
           pip install cookiecutter
-          printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git
+          printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git --checkout main
       - name: Before install
         run: |
           pip install poetry
@@ -65,10 +81,12 @@ jobs:
         run: |
           invenio
       - name: Run tests
+        env:
+          INVENIO_SQLALCHEMY_DATABASE_URI: ${{ matrix.SQLALCHEMY_DATABASE_URI }}
         run: |
           cd my-site
           ls -la
-          ./run-tests.sh
+          ./run_tests.sh
 #      - name: Docker compose
 #        run: |
 #          cd my-site

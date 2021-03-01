@@ -16,22 +16,34 @@ echo -e "\npsql version:"
 psql --version
 
 setup () {
+  # test database
+  echo -e "\nTest database:"
+  pg_isready -h localhost -p 5432
+  echo $SQLALCHEMY_DATABASE_URI
+
+
   # database
-  invneio db init
+  echo -e "\ninvenio db init and create"
+  invenio db init
   invenio db create
 
   # elastisearch
   echo -e "\nelasticsearch GET:"
   curl -sX GET "http://127.0.0.1:9200" || cat /tmp/local-es.log
+
+  # index
+  echo -e "\nInvenio Index"
   invenio index destroy --force --yes-i-know
   invenio index init
-  invenio index queue init purge
-  invenio index check
+#  invenio index queue init purge
+#  invenio index check
 
   # taxonomies
+  echo -e "\nTaxonomies"
   invenio taxonomies init
 
   # files
+  echo -e "\nFiles"
   invenio files location --default 'default-s3' s3://oarepo
 
   # Create roles to manage access
@@ -55,13 +67,13 @@ export INVENIO_RECORDS_REST_DEFAULT_CREATE_PERMISSION_FACTORY='invenio_records_r
 export INVENIO_RECORDS_REST_DEFAULT_UPDATE_PERMISSION_FACTORY='invenio_records_rest.utils:allow_all'
 export INVENIO_RECORDS_REST_DEFAULT_DELETE_PERMISSION_FACTORY='invenio_records_rest.utils:allow_all'
 
-invenio run --cert ./{{cookiecutter.project_shortname}}/ssl/test.crt --key ./{{cookiecutter.project_shortname}}/ssl/test.key > invenio_run.log 2>&1 &
+invenio run --cert ./development/server.crt --key ./development/server.key > invenio_run.log 2>&1 &
 INVEPID=$!
 trap "kill $INVEPID &>/dev/null; cat invenio_run.log" EXIT
 sleep 8
 
-echo -n "jq version:"; jq --version
-./scripts/test_rest.sh
+#echo -n "jq version:"; jq --version
+python ./scripts/test_rest.py
 
 kill $INVEPID
 trap - EXIT

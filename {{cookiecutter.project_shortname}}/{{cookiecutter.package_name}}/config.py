@@ -6,7 +6,7 @@ from datetime import timedelta
 # Database
 # ========
 #: Database URI including user and password
-SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{{cookiecutter.project_shortname}}:{{cookiecutter.project_shortname}}@localhost/{{cookiecutter.project_shortname}}'
+# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{{cookiecutter.project_shortname}}:{{cookiecutter.project_shortname}}@localhost/{{cookiecutter.project_shortname}}'
 
 PIDSTORE_RECID_FIELD = '{{ cookiecutter.datamodel_pid_name }}'
 JSONSCHEMAS_HOST = '{{ cookiecutter.server_name }}'
