@@ -63,8 +63,9 @@ jobs:
           stack-version: 7.6.0
       - name: Cookiecutter
         run: |
+          BRANCH_NAME=${GITHUB_REF##*/}
           pip install cookiecutter
-          printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git --checkout main
+          printf '\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter https://github.com/oarepo/cookiecutter-oarepo-instance.git --checkout $BRANCH_NAME
       - name: Before install
         run: |
           pip install poetry
