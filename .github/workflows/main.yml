@@ -35,6 +35,8 @@ jobs:
         SQLALCHEMY_DATABASE_URI: ["postgresql://postgres:postgres@localhost:5432/ci-test"]
 
     steps:
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
