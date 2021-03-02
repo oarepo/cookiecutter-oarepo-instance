@@ -4,6 +4,7 @@ from invenio_indexer.api import RecordIndexer
 from invenio_records_rest.utils import allow_all, deny_all, check_elasticsearch
 from invenio_search import RecordsSearch
 from {{ cookiecutter.package_name }}.records.record import all_index_name, draft_index_name, published_index_name, AllRecords
+from oarepo_records_draft import DRAFT_IMPORTANT_FACETS, DRAFT_IMPORTANT_FILTERS
 
 RECORDS_DRAFT_ENDPOINTS = {
     'record': {
@@ -85,11 +86,11 @@ RECORDS_REST_ENDPOINTS = {
 }
 
 FILTERS = {
-
+    **DRAFT_IMPORTANT_FILTERS
 }
 
 FACETS = {
- # TODO: přidat default draftové facety
+    **DRAFT_IMPORTANT_FACETS
 }
 
 ANONYMOUS_FACETS = {
