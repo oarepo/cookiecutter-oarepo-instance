@@ -41,6 +41,16 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+#      - name: Cache pip
+#        uses: actions/cache@v2
+#        with:
+#          # This path is specific to Ubuntu
+#          path: ~/.cache/pip
+#          # Look to see if there is a cache hit for the corresponding requirements file
+#          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pip-
+#            ${{ runner.os }}-
       - name: Configure sysctl limits
         run: |
           sudo swapoff -a
@@ -78,7 +88,23 @@ jobs:
           cd my-site
           ls -la
           ./run_tests.sh
-
+#      - name: Docker compose
+#        run: |
+#          cd my-site
+#          docker-compose up -d
+#      - name: Setup invenio
+#        run: |
+#          cd my-site/scripts
+#          chmod +x setup.sh
+#          ./setup.sh
+#      - name: Run invenio
+#        run: |
+#          cd my-site/scripts
+#          chmod +x setup.sh
+#          ./run.sh
+#      - name: Test with pytest
+#        run: |
+#          pytest tests
 
 
 
