@@ -27,7 +27,7 @@ oarepo-references = "^1.11.2"
 oarepo-taxonomies = "^2.5.4"
 oarepo-multilingual = "^2.4.3"
 
-s3-client-lib = { git = "https://github.com/CESNET/s3-client.git", branch = "master" }
+s3-client-lib = "0.1.6"
 
 
 [tool.poetry.plugins."invenio_config.module"]
